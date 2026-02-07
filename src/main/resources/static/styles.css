@@ -1,0 +1,258 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+
+h1 {
+    text-align: center;
+    color: #667eea;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #764ba2;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.tab-button {
+    padding: 12px 24px;
+    border: none;
+    background: transparent;
+    color: #666;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-button:hover {
+    color: #667eea;
+}
+
+.tab-button.active {
+    color: #667eea;
+    border-bottom-color: #667eea;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-container {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+form {
+    display: grid;
+    gap: 15px;
+}
+
+input, select, textarea {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button[type="submit"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    flex: 1;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+button[type="button"] {
+    background: #6c757d;
+    color: white;
+}
+
+button[type="button"]:hover {
+    background: #5a6268;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-edit {
+    background: #ffc107;
+    color: #333;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-edit:hover {
+    background: #ffb300;
+}
+
+.btn-delete {
+    background: #dc3545;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-delete:hover {
+    background: #c82333;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateX(400px);
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification.success {
+    background: #28a745;
+}
+
+.notification.error {
+    background: #dc3545;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    .tabs {
+        flex-direction: column;
+    }
+    
+    table {
+        font-size: 12px;
+    }
+    
+    th, td {
+        padding: 8px;
+    }
+}

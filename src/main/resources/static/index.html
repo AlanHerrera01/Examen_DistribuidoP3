@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Siniestros</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Gestión de Siniestros</h1>
+        
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('polizas')">Pólizas</button>
+            <button class="tab-button" onclick="showTab('proveedores')">Proveedores</button>
+            <button class="tab-button" onclick="showTab('siniestros')">Siniestros</button>
+        </div>
+
+        <!-- PÓLIZAS TAB -->
+        <div id="polizas" class="tab-content active">
+            <h2>Gestión de Pólizas</h2>
+            <div class="form-container">
+                <h3>Nueva Póliza</h3>
+                <form id="polizaForm">
+                    <input type="hidden" id="polizaId">
+                    <input type="text" id="polizaNumero" placeholder="Número de Póliza" required>
+                    <select id="polizaTipo" required>
+                        <option value="">Seleccione Tipo</option>
+                        <option value="AUTO">Auto</option>
+                        <option value="HOGAR">Hogar</option>
+                        <option value="VIDA">Vida</option>
+                        <option value="SALUD">Salud</option>
+                    </select>
+                    <select id="polizaEstado" required>
+                        <option value="">Seleccione Estado</option>
+                        <option value="ACTIVA">Activa</option>
+                        <option value="SUSPENDIDA">Suspendida</option>
+                        <option value="CANCELADA">Cancelada</option>
+                    </select>
+                    <div class="form-buttons">
+                        <button type="submit">Guardar</button>
+                        <button type="button" onclick="resetPolizaForm()">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="table-container">
+                <h3>Lista de Pólizas</h3>
+                <table id="polizasTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Número</th>
+                            <th>Tipo</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- PROVEEDORES TAB -->
+        <div id="proveedores" class="tab-content">
+            <h2>Gestión de Proveedores</h2>
+            <div class="form-container">
+                <h3>Nuevo Proveedor</h3>
+                <form id="proveedorForm">
+                    <input type="hidden" id="proveedorId">
+                    <input type="text" id="proveedorNombre" placeholder="Nombre" required>
+                    <select id="proveedorTipo" required>
+                        <option value="">Seleccione Tipo</option>
+                        <option value="TALLER">Taller</option>
+                        <option value="CLÍNICA">Clínica</option>
+                        <option value="GRÚA">Grúa</option>
+                    </select>
+                    <input type="text" id="proveedorCiudad" placeholder="Ciudad" required>
+                    <div class="form-buttons">
+                        <button type="submit">Guardar</button>
+                        <button type="button" onclick="resetProveedorForm()">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="table-container">
+                <h3>Lista de Proveedores</h3>
+                <table id="proveedoresTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Ciudad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SINIESTROS TAB -->
+        <div id="siniestros" class="tab-content">
+            <h2>Gestión de Siniestros</h2>
+            <div class="form-container">
+                <h3>Nuevo Siniestro</h3>
+                <form id="siniestroForm">
+                    <input type="hidden" id="siniestroId">
+                    <input type="text" id="siniestroNumeroCaso" placeholder="Número de Caso" required>
+                    <input type="date" id="siniestroFecha" required>
+                    <textarea id="siniestroDescripcion" placeholder="Descripción" required></textarea>
+                    <input type="number" id="siniestroMonto" placeholder="Monto Estimado" step="0.01" required>
+                    <select id="siniestroEstado" required>
+                        <option value="">Seleccione Estado</option>
+                        <option value="ABIERTO">Abierto</option>
+                        <option value="EN_PROCESO">En Proceso</option>
+                        <option value="CERRADO">Cerrado</option>
+                    </select>
+                    <select id="siniestroPolizaId" required>
+                        <option value="">Seleccione Póliza</option>
+                    </select>
+                    <select id="siniestroProveedorId" required>
+                        <option value="">Seleccione Proveedor</option>
+                    </select>
+                    <div class="form-buttons">
+                        <button type="submit">Guardar</button>
+                        <button type="button" onclick="resetSiniestroForm()">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="table-container">
+                <h3>Lista de Siniestros</h3>
+                <table id="siniestrosTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Número de Caso</th>
+                            <th>Fecha</th>
+                            <th>Descripción</th>
+                            <th>Monto</th>
+                            <th>Estado</th>
+                            <th>Póliza</th>
+                            <th>Proveedor</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
